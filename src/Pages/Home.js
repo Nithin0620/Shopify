@@ -29,13 +29,17 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center h-screen">
       {loading ? (
         <Spinner />
       ) : products.length === 0 ? (
-        <div>No products Available</div>
+        <div className="flex justify-center items-center">No products Available</div>
       ) : (
-        products.map((product) => <Products key={product.id} data={product} />)
+        <div className="grid   sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl p-2 mx-auto space-y-10 space-x-5 min-h-[80vh]">
+          {products.map((product) => (
+            <Products key={product.id} data={product} />
+          ))}
+        </div>
       )}
     </div>
   );
